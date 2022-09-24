@@ -1,0 +1,39 @@
+CREATE TABLE Ticket (
+  ticket_id SERIAL primary key,
+  showing_id SERIAL,
+  movie_id SERIAL,
+  seat_id SERIAL,
+  theater_id SERIAL
+);
+
+CREATE TABLE Seat (
+  seat_id SERIAL primary key,
+  seat_row varchar(1),
+  seat_number int,
+  theater_id SERIAL
+);
+
+CREATE TABLE Movie (
+  movie_id SERIAL primary key,
+  title varchar(100),
+  director varchar(100),
+  movie_length time
+);
+
+CREATE TABLE Showing (
+  showing_id SERIAL primary key,
+  movie_id SERIAL,
+  theater_id SERIAL,
+  movie_start TIME,
+  foreign key (movie_id) references Movie(movie_id)
+);
+
+CREATE TABLE Theater (
+  theater_id SERIAL primary key
+);
+
+CREATE TABLE Customer (
+  customer_id SERIAL primary key,
+  customer_firstname varchar(32),
+  customer_lastname varchar(32)
+);
